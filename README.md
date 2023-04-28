@@ -1,12 +1,12 @@
-# FAAP-documentation
-## Importing Legacy Users
+## Importing Legacy Users Documentation
 ### Formatting the CSV
 Since the “import and export users and customers” plugin requires a specific format for the CSV, you will need to run a script to format the existing users CSV into an importable CSV. 
 
-1. Rename your existing users CSV to “master.csv”
-2. Place this CSV file in the same folder as your map.exe executable (will be given to you).
-3. Run map.exe
-4. The resulting file will be called target.csv.
+1. Download the map.exe file from this repository
+2. Rename your existing users CSV to “master.csv”
+3. Place this CSV file in the same folder as your map.exe executable (will be given to you).
+4. Run map.exe
+5. The resulting file will be called target.csv.
 
 ### Importing a CSV
 1. Install the “[Import and export users and customers](https://wordpress.org/plugins/import-users-from-csv-with-meta/)” plugin
