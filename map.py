@@ -1,11 +1,13 @@
 import csv
+import os
 
 # Define the mapping between the input and output columns
 mapping = {
     'username': 'username',
+    'Email': 'email',
     'user_email': 'user_email',
     'user_login': 'user_login',
-    'Email': 'email',
+    'password': 'password',
     'firstname': 'first_name',
     'Lastname': 'last_name',
     'ur_form_id': 'ur_form_id',
@@ -38,11 +40,19 @@ ignored = [
   'user_registration_input_box_1680744514',
   'user_registration_input_box_1680744592',
   'user_registration_input_box_1680744537',
-  'user_registration_country_1680744618'
+  'user_registration_country_1680744618',
+  'password'
 ]
 
+# Get the directory of the current script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the relative input and output file paths
+input_path = os.path.join(script_dir, 'master.csv')
+output_path = os.path.join(script_dir, 'target.csv')
+
 # Open the input and output CSV files
-with open('/Users/michelleliu/67373/master.csv', 'r') as input_file, open('/Users/michelleliu/67373/target.csv', 'w', newline='') as output_file:
+with open(input_path, 'r') as input_file, open(output_path, 'w', newline='') as output_file:
     # Create CSV reader and writer objects
     print(mapping.values())
     reader = csv.DictReader(input_file)
@@ -62,9 +72,9 @@ with open('/Users/michelleliu/67373/master.csv', 'r') as input_file, open('/User
         mapped_row['username'] = row['Email']
         mapped_row['user_login'] = row['Email']
         mapped_row['user_email'] = row['Email']
-        mapped_row['username'] = row['Email']
         mapped_row['ur_form_id'] = '2171'
         mapped_row['ur_user_status'] = '1'
+        mapped_row['password'] = (row['firstname'][0] + row['Lastname'] + row['phone'][-4:]).lower().replace(" ", "").replace("-", "")
         mapped_row['type'] = 'legacy'
         mapped_row['user_registration_input_box_1680744374'] = row['street']
         mapped_row['user_registration_input_box_1680744514'] = row['city']
